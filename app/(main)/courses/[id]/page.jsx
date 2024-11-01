@@ -8,14 +8,9 @@ import { replaceMongoIdInArray } from "@/lib/convertData";
 const SingleCoursePage = async ({ params: { id } }) => {
   const course = await getCourseById(id);
 
-
   return (
     <>
-      <CourseDetailsIntro
-        title={course?.title}
-        subtitle={course?.subtitle}
-        thumbnail={course?.thumbnail}
-      ></CourseDetailsIntro>
+      <CourseDetailsIntro course={course}></CourseDetailsIntro>
 
       <CourseDetails course={course}></CourseDetails>
 

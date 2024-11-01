@@ -84,7 +84,7 @@ export const getCourseDetailsByInstructor = async (instructorId) => {
   );
   const totalEnrollment = enrollmentArr.reduce((prevItem, currentItem) => {
     return currentItem.length + prevItem.length;
-  });
+  }, 0);
 
   //total testimonial
   const testimonialArr = await Promise.all(
@@ -99,7 +99,6 @@ export const getCourseDetailsByInstructor = async (instructorId) => {
     totalTestimonials.reduce((prevItem, currentItem) => {
       return prevItem + currentItem.rating;
     }, 0) / totalTestimonials.length;
-
 
   return {
     courses: courses.length,

@@ -8,6 +8,7 @@ export const CourseInstructor = async ({ course }) => {
     course?.instructor?._id.toString()
   );
 
+
   return (
     <>
       <div className="bg-gray-50 rounded-md p-8">
@@ -24,7 +25,7 @@ export const CourseInstructor = async ({ course }) => {
           <div className="flex-1">
             <div className="max-w-[300px]">
               <h4 className="text-[34px] font-bold leading-[51px]">
-                {course?.instructor?.firstName} {course?.instructor?.lastName}
+                {course?.instructor?.firstName}  {course?.instructor?.lastName}
               </h4>
               <div className="text-gray-600 font-medium mb-6">
                 {course?.instructor?.designation}

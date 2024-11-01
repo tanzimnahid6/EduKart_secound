@@ -4,7 +4,9 @@ import React from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { createCheckoutSession } from "@/app/actions/stripe";
-const EnrollCourse = ({ asLink }) => {
+const EnrollCourse = ({ asLink, course }) => {
+  
+
   const formAction = async (data) => {
     // call your backend API to enroll the user in the course
     const { url } = await createCheckoutSession(data);
@@ -13,6 +15,9 @@ const EnrollCourse = ({ asLink }) => {
   return (
     <>
       <form action={formAction}>
+        <input type="hidden" name="courseId" value={course?.id} />
+        <input type="hidden" name="courseName" value={course?.title} />
+        <input type="hidden" name="coursePrice" value={course?.price} />
         {asLink ? (
           <Button
             variant="ghost"

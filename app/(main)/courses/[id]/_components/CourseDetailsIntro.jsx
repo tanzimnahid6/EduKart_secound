@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export const CourseDetailsIntro = ({ title, subtitle, thumbnail }) => {
+export const CourseDetailsIntro = ({ course }) => {
+  const { title, subtitle, thumbnail } = course;
   return (
     <div className="overflow-x-hidden  grainy">
       <section className="pt-12  sm:pt-16">
@@ -23,7 +24,7 @@ export const CourseDetailsIntro = ({ title, subtitle, thumbnail }) => {
               </p>
 
               <div className="mt-6 flex items-center justify-center flex-wrap gap-3">
-                <EnrollCourse></EnrollCourse>
+                <EnrollCourse course={course}></EnrollCourse>
                 <Link
                   href=""
                   className={cn(

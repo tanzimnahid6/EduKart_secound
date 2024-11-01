@@ -9,6 +9,9 @@ const CURRENCY = "BDT";
 export const createCheckoutSession = async (data) => {
   const ui_mode = "hosted";
   const origin = headers().get("origin");
+  const courseId = data.get("courseId");
+  const courseName = data.get("courseName");
+  const coursePrice = data.get("coursePrice");
 
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: "payment",
@@ -19,14 +22,14 @@ export const createCheckoutSession = async (data) => {
         price_data: {
           currency: CURRENCY,
           product_data: {
-            name: "React Next course",
+            name: courseName,
           },
-          unit_amount: formatAmountForStripe(10000, CURRENCY),
+          unit_amount: formatAmountForStripe(coursePrice, CURRENCY),
         },
       },
     ],
     ...(ui_mode === "hosted" && {
-      success_url: `${origin}/enroll-success?session_id={CHECKOUT_SESSION_ID}&courseId=12445`,
+      success_url: `${origin}/enroll-success?session_id={CHECKOUT_SESSION_ID}&courseId=${courseId}`,
 
       cancel_url: `${origin}/courses`,
     }),
